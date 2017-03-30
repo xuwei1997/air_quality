@@ -1,0 +1,1 @@
+通过arduino采集数据，usb串口传输到树莓派，树莓派通过4g网络上传到yeelink。安卓程序从yeelink上获取数据。
