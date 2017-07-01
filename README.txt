@@ -1,1 +1,2 @@
+20170701
 通过arduino采集数据，usb串口传输到firefly，树莓派通过网络上传到oneNET。安卓程序从oneNET上获取数据。
