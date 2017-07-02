@@ -4,7 +4,7 @@ import json
 import time
 import re
 
-ser = serial.Serial('/dev/ttyACM1',9600,timeout=1)
+ser = serial.Serial('/dev/ttyACM0',9600,timeout=1)
 key='a'
 key = key.encode("ascii")
 
@@ -15,10 +15,12 @@ while len(data_arr)<11 :
     time.sleep(0.5)
     data=re.split(r'\|' , str(da))
     if len(data)==8:
-        c= int(data[2])+int(data[3])+int(data[4])
-        if data[1] == 'aaa' and data[6] == 'bbb' and c== int(data[5]):
-            print("a")
-            data_arr.append(data)
+        for i in range(9):
+            if i>1 and i<6:
+                data[i]=int(data[i])
+        c= data[2]+data[3]+data[4]
+        if data[1] == 'aaa' and data[6] == 'bbb' and c== data[5]:
+            data_arr.append(data[2:5])
 print(data_arr)
 
 #url='http://api.heclouds.com/devices/9106291/datapoints?type=3'
